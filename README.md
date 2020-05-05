@@ -67,3 +67,4 @@ All of these can be executed on high-performance workstations or on low-cost SBC
 - Python web frameworks:
   - [Tornado](https://www.tornadoweb.org/en/stable/)
   - [Flask](https://palletsprojects.com/p/flask/)
+- [hipolitoguzman/virtualboard](https://github.com/hipolitoguzman/virtualboard)
