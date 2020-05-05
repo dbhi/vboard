@@ -2,9 +2,9 @@
 
 This is a (proof of concept) library/framework of *virtual components* which can be reused to *build* HDL testbenches including software models/visualizations of non-trivial peripherals. Each virtual component is composed of three parts:
 
-- Frontend: HDL module/component.
+- Frontend (HDL module/component).
 - Transport layer/machanism.
-- Backend: software library.
+- Backend (software library).
 
 The purpose of this repository is to document the APIs that are used between the frontend and the transport, and between the tansport and the backend. Multiple projects exist which combine either GHDL or Verilator with foreign languages (C/C++, Python, m, golang, JavaScript, etc.). Many of them implement the same peripherals (e.g. virtual VGA screen). However, there is no framework to share common resources. For instance, drawing the content of a framebuffer in a window is independent from how it is filled (either from VHDL, Verilog or some other HDL).
 
@@ -35,16 +35,20 @@ All of these can be executed on high-performance workstations or on low-cost SBC
 
 ## References
 
-- [ghdl/ghdl-cosim](https://github.com/ghdl/ghdl-cosim)
+- [ghdl/ghdl-cosim](https://github.com/ghdl/ghdl-cosim) ([VGA (RGB image buffer)](https://ghdl.github.io/ghdl-cosim/vhpidirect/examples/arrays.html#vga-rgb-image-buffer))
 - [gitter.im/ghdl1/Lobby: 2019/07/12 8:12AM](https://gitter.im/ghdl1/Lobby?at=5d2824c0c3740260bb093989)
 - [VUnit/cosim](https://github.com/VUnit/cosim)
   - [VUnit/vunit#568](https://github.com/VUnit/vunit/pull/568)
 - [hackfin/ghdlex](https://github.com/hackfin/ghdlex)
   - https://section5.ch/doc/ghdlex/html/index.html
-- [renode.io](https://renode.io/)
+- [ZipCPU/vgasim](https://github.com/ZipCPU/vgasim)
+  - [zipcpu.com/blog: Building a video controller: it's just a pair of counters](https://zipcpu.com/blog/2018/11/29/llvga.html)
+  - [juanmard/screen-pong@gtk-verilator/game-pong/verilog](https://github.com/juanmard/screen-pong/tree/gtk-verilator/game-pong/verilog)
 - [8bitworkshop.com](https://8bitworkshop.com/)
   - [sehugg/8bitworkshop](https://github.com/sehugg/8bitworkshop)
   - https://8bitworkshop.com/redir.html?platform=verilog
+- [adumont/hrm-cpu@master/gui](https://github.com/adumont/hrm-cpu/tree/master/gui)
+- [renode.io](https://renode.io/)
 - [labsland.com](https://labsland.com)
 - [redwoodeda.com](https://www.redwoodeda.com/)
   - [tl-x.org](http://tl-x.org/)
