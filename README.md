@@ -41,6 +41,7 @@ All of these can be executed on high-performance workstations or on low-cost SBC
   - [VUnit/vunit#568](https://github.com/VUnit/vunit/pull/568)
 - [hackfin/ghdlex](https://github.com/hackfin/ghdlex)
   - https://section5.ch/doc/ghdlex/html/index.html
+  - [hackfin/MaSoCist](https://github.com/hackfin/MaSoCist)
 - [ZipCPU/vgasim](https://github.com/ZipCPU/vgasim)
   - [zipcpu.com/blog: Building a video controller: it's just a pair of counters](https://zipcpu.com/blog/2018/11/29/llvga.html)
   - [juanmard/screen-pong@gtk-verilator/game-pong/verilog](https://github.com/juanmard/screen-pong/tree/gtk-verilator/game-pong/verilog)
