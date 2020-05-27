@@ -57,10 +57,10 @@ All of these can be executed on high-performance workstations or on low-cost SBC
     - [stevehoover/warp-v](https://github.com/stevehoover/warp-v)
   - [makerchip.com](https://www.makerchip.com/)
   - [stevehoover/1st-CLaaS](https://github.com/stevehoover/1st-CLaaS)
-    - https://www.linkedin.com/pulse/paving-way-fpga-accelerated-web-applications-%25C3%25A1kos-hadnagy
-    - https://opensource.googleblog.com/2019/09/unleashing-open-source-silicon.html
-    - https://abopen.com/news/1st-claas-and-google-summer-of-code-work-to-open-the-floodgates-of-free-and-open-source-silicon/
-  - [http://fractalvalley.net/](fractalvalley.net)
+    - [linkedin.com: Paving the Way for FPGA Accelerated Web Applications](https://www.linkedin.com/pulse/paving-way-fpga-accelerated-web-applications-%25C3%25A1kos-hadnagy)
+    - [opensource.googleblog.com: Unleashing Open Source Silicon](https://opensource.googleblog.com/2019/09/unleashing-open-source-silicon.html)
+    - [abopen.com: 1st CLaaS and Google Summer of Code Work to “Open The Floodgates” of Free and Open Source Silicon](https://abopen.com/news/1st-claas-and-google-summer-of-code-work-to-open-the-floodgates-of-free-and-open-source-silicon/)
+  - [fractalvalley.net](http://fractalvalley.net/)
 - [tinkercad.com/circuits](https://www.tinkercad.com/circuits)
 - [gitpod.io](https://www.gitpod.io/)
 - [TerosTechnology/terosHDL](https://github.com/TerosTechnology/terosHDL)
