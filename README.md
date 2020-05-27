@@ -1,4 +1,4 @@
-# Virtual development board for VHDL design
+# Virtual development board for HDL design
 
 This is a (proof of concept) library/framework of *virtual components* which can be reused to *build* HDL testbenches including software models/visualizations of non-trivial peripherals. Each virtual component is composed of three parts:
 
