@@ -50,6 +50,8 @@ All of these can be executed on high-performance workstations or on low-cost SBC
   - https://8bitworkshop.com/redir.html?platform=verilog
 - [adumont/hrm-cpu@master/gui](https://github.com/adumont/hrm-cpu/tree/master/gui)
 - [renode.io](https://renode.io/)
+- [isotel/mixedsim](https://github.com/Isotel/mixedsim)
+  - [isotel.eu/mixedsim](https://www.isotel.eu/mixedsim/#)
 - [labsland.com](https://labsland.com)
 - [redwoodeda.com](https://www.redwoodeda.com/)
   - [tl-x.org](http://tl-x.org/)
