@@ -1,12 +1,15 @@
+ifeq ($(VGA_BOARD),tinyfpgabx)
 # TinyFPGA-BX
-#PNRFLAGS  ?= --lp8k --package cm81 --pcf board/tinyfpgabx.pcf -q
-#BOARD_TOP = TinyFPGABX_Top
-#BOARD_FILES = board/TinyFPGABX_PLL_config_pkg.vhd
-
+PNRFLAGS  ?= --lp8k --package cm81 --pcf board/tinyfpgabx.pcf -q
+BOARD_TOP = TinyFPGABX_Top
+BOARD_FILES = board/TinyFPGABX_PLL_config_pkg.vhd
+else
 # Icestick
 PNRFLAGS  ?= --hx1k --package tq144 --pcf board/icestick.pcf -q
 BOARD_TOP = Icestick_Top
 BOARD_FILES = board/Icestick_PLL_config_pkg.vhd
+$(info Default VGA_BOARD value: 'icestick' (allowed: 'tinyfpgabx' or 'icestick'))
+endif
 
 #--
 
@@ -30,14 +33,11 @@ VHDL_SYN_FILES = \
 	$(BOARD_FILES) \
 	board/$(BOARD_TOP).vhd
 
-# Default target: run all required targets to build the image.
 all: vgatest.bin
 	@true
 
 .DEFAULT: all
 
-## Use *Yosys* to generate the synthesized netlist.
-## This is called the **synthesis** and **tech mapping** step.
 vgatest.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
 	$(YOSYS) $(YOSYS_FLAGS) \
 		-p \
@@ -46,27 +46,21 @@ vgatest.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
 		-top $(BOARD_TOP) \
 		-json $@" 2>&1 board/pll.v | tee yosys-report.txt
 
-# Use **nextpnr** to generate the FPGA configuration.
-# This is called the **place** and **route** step.
 vgatest.asc: vgatest.json
 	$(NEXTPNR) \
 		$(PNRFLAGS) \
 		--json $< \
 		--asc $@
 
-# Use icepack to convert the FPGA configuration into a "bitstream" loadable onto the FPGA.
-# This is called the bitstream generation step.
 vgatest.bin: vgatest.asc
 	$(ICEPACK) $< $@
 
-# Use tinyprog to load the image onto the TinyFPGA-BX.
 load: vgatest.bin
 	iceprog $<
 #	tinyprog -p $<
 
 .PHONY: load
 
-# Cleanup the generated files.
 clean:
 	rm -fr *.cf *.json *-report.txt *.asc *.bin abc.history
 
