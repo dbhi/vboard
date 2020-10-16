@@ -36,14 +36,16 @@ begin
   -- Drive USB pull-up resistor to '0' to disable USB
   USBPU <= '0';
 
-  PLL_0: PLL
+  PLL_0: SB_PLL40_CORE
   generic map (
     DIVF => to_unsigned( PLL_cfg.DIVF, 7),
     DIVQ => to_unsigned( PLL_cfg.DIVQ, 3)
   )
   port map (
-    clki => CLK,
-    clko => clki
+    REFERENCECLK => CLK,
+    PLLOUTCORE   => clki,
+    BYPASS       => '0',
+    RESETB       => '1'
   );
 
   UUT: entity work.Design_Top(pattern)

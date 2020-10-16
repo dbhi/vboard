@@ -52,7 +52,7 @@ vgatest.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
 		"$(GHDL_SYNTH) $(GHDL_FLAGS) $(VHDL_SYN_FILES) -e; \
 		$(YOSYS_SYNTH) \
 		-top $(BOARD_TOP) \
-		-json $@" 2>&1 board/pll.v | tee yosys-report.txt
+		-json $@" 2>&1 | tee yosys-report.txt
 
 vgatest.asc: vgatest.json
 	$(NEXTPNR) \
