@@ -1,9 +1,9 @@
 library ieee;
 context ieee.ieee_std_context;
 
-use work.vga_cfg_pkg.all;
+use work.VGA_config.all;
 
-architecture pattern of Design_Top is
+architecture demo of Design_Top is
 
   constant cfg : VGA_config := VGA_configs(G_SCREEN);
 
@@ -29,7 +29,7 @@ architecture pattern of Design_Top is
 
 begin
 
-  i_sync: entity work.vga_sync_gen_cfg
+  i_sync: entity work.VGA_sync_gen_cfg
   generic map (
     CONFIG => cfg
   )

@@ -1,4 +1,4 @@
-package vga_cfg_pkg is
+package VGA_config is
 
 type VGA_config is record
   width  : natural; -- W: width
@@ -86,4 +86,4 @@ constant VGA_configs : VGA_configs_t(0 to 61) := (
   61 => ( 1920,  1440,   75,  297000,  224,  352,  144,  3,   56,   1,   true,  false )
 );
 
-end vga_cfg_pkg;
+end VGA_config;

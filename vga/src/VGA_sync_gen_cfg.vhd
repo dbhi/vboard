@@ -1,9 +1,9 @@
 library ieee;
 context ieee.ieee_std_context;
 
-use work.vga_cfg_pkg.all;
+use work.VGA_config.all;
 
-entity vga_sync_gen_cfg is
+entity VGA_sync_gen_cfg is
   generic (
     CONFIG: VGA_config
   );
@@ -19,11 +19,11 @@ entity vga_sync_gen_cfg is
 end entity;
 
 
-architecture wrap of vga_sync_gen_cfg is
+architecture wrap of VGA_sync_gen_cfg is
 
 begin
 
-  i_sync: entity work.vga_sync_gen
+  i_sync: entity work.VGA_sync_gen
   generic map (
     G_HPULSE => CONFIG.hpulse,
     G_HFRONT => CONFIG.hfront,

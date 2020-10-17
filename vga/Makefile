@@ -30,12 +30,12 @@ YOSYS_FLAGS   += -q
 NEXTPNR_FLAGS += -q
 
 VHDL_SYN_FILES = \
-	src/cfg_pkg.vhd \
-	src/vga_sync_gen_idx.vhd \
-	src/vga_sync_gen.vhd \
-	src/vga_sync_gen_cfg.vhd \
+	src/VGA_config_pkg.vhd \
+	src/VGA_sync_gen_idx.vhd \
+	src/VGA_sync_gen.vhd \
+	src/VGA_sync_gen_cfg.vhd \
 	src/Design_Top.vhd \
-	src/pattern.vhd \
+	src/demo.vhd \
 	device/ICE40/ICE40_components_pkg.vhd \
 	device/ICE40/ICE40_PLL_config_pkg.vhd \
 	$(BOARD_FILES) \

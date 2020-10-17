@@ -48,7 +48,7 @@ begin
     RESETB       => '1'
   );
 
-  UUT: entity work.Design_Top(pattern)
+  UUT: entity work.Design_Top(demo)
   generic map (
     G_SCREEN => SCREEN
   )

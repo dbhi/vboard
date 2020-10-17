@@ -1,7 +1,7 @@
 library ieee;
 context ieee.ieee_std_context;
 
-entity vga_sync_gen is
+entity VGA_sync_gen is
   generic (
     G_HPULSE: natural;
     G_HFRONT: natural;
@@ -26,13 +26,13 @@ entity vga_sync_gen is
 end entity;
 
 
-architecture arch of vga_sync_gen is
+architecture arch of VGA_sync_gen is
 
   signal tc: std_logic;
 
 begin
 
-  i_h: entity work.vga_syn_gen_idx
+  i_h: entity work.VGA_syn_gen_idx
     generic map (
       G_PULSE  => G_HPULSE,
       G_FRONT  => G_HFRONT,
@@ -49,7 +49,7 @@ begin
       TC   => tc
     );
 
-  i_v: entity work.vga_syn_gen_idx
+  i_v: entity work.VGA_syn_gen_idx
     generic map (
       G_PULSE  => G_VPULSE,
       G_FRONT  => G_VFRONT,
