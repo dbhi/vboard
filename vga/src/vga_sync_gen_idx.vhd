@@ -1,7 +1,7 @@
 library ieee;
 context ieee.ieee_std_context;
 
-entity vga_sync_st is
+entity vga_syn_gen_idx is
   generic (
     G_PULSE  : natural;
     G_FRONT  : natural;
@@ -20,7 +20,7 @@ entity vga_sync_st is
 end entity;
 
 
-architecture arch of vga_sync_st is
+architecture arch of vga_syn_gen_idx is
 
   type limits_t is array (natural range 0 to 3) of integer;
   constant h_lim : limits_t := (G_LENGTH-1, G_BACK-1, G_PULSE-1, G_FRONT-1);

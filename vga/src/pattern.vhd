@@ -29,18 +29,9 @@ architecture pattern of Design_Top is
 
 begin
 
-  i_sync: entity work.vga_sync_gen
+  i_sync: entity work.vga_sync_gen_cfg
   generic map (
-    G_HPULSE => cfg.hpulse,
-    G_HFRONT => cfg.hfront,
-    G_WIDTH  => cfg.width,
-    G_HBACK  => cfg.hback,
-    G_HPOL   => cfg.hpol,
-    G_VPULSE => cfg.vpulse,
-    G_VFRONT => cfg.vfront,
-    G_HEIGHT => cfg.height,
-    G_VBACK  => cfg.vback,
-    G_VPOL   => cfg.vpol
+    CONFIG => cfg
   )
   port map (
     CLK   => CLK,

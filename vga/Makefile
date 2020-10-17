@@ -29,8 +29,9 @@ NEXTPNR_FLAGS += -q
 
 VHDL_SYN_FILES = \
 	src/cfg_pkg.vhd \
-	src/sync_gen.vhd \
-	src/sync_st.vhd \
+	src/vga_sync_gen_idx.vhd \
+	src/vga_sync_gen.vhd \
+	src/vga_sync_gen_cfg.vhd \
 	src/Design_Top.vhd \
 	src/pattern.vhd \
 	device/ICE40/ICE40_components_pkg.vhd \

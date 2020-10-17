@@ -32,7 +32,7 @@ architecture arch of vga_sync_gen is
 
 begin
 
-  i_h: entity work.vga_sync_st
+  i_h: entity work.vga_syn_gen_idx
     generic map (
       G_PULSE  => G_HPULSE,
       G_FRONT  => G_HFRONT,
@@ -49,7 +49,7 @@ begin
       TC   => tc
     );
 
-  i_v: entity work.vga_sync_st
+  i_v: entity work.vga_syn_gen_idx
     generic map (
       G_PULSE  => G_VPULSE,
       G_FRONT  => G_VFRONT,
@@ -66,4 +66,4 @@ begin
       TC   => open
     );
 
-end architecture;
+end;
