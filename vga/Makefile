@@ -1,26 +1,31 @@
 ifeq ($(VGA_BOARD),tinyfpgabx)
 # TinyFPGA-BX
-PNRFLAGS  ?= --lp8k --package cm81 --pcf board/tinyfpgabx.pcf -q
+DEVICE = lp8k
+PACKAGE = cm81
 BOARD_TOP = TinyFPGABX_Top
-BOARD_FILES = board/TinyFPGABX_PLL_config_pkg.vhd
+BOARD_FILES = board/$(VGA_BOARD)/TinyFPGABX_PLL_config_pkg.vhd
 else
 # Icestick
-PNRFLAGS  ?= --hx1k --package tq144 --pcf board/icestick.pcf -q
+VGA_BOARD = icestick
+DEVICE = hx1k
+PACKAGE = tq144
 BOARD_TOP = Icestick_Top
-BOARD_FILES = board/Icestick_PLL_config_pkg.vhd
+BOARD_FILES = board/$(VGA_BOARD)/Icestick_PLL_config_pkg.vhd
 $(info Default VGA_BOARD value: 'icestick' (allowed: 'tinyfpgabx' or 'icestick'))
 endif
 
 #--
 
-YOSYS_FLAGS ?=
-YOSYS_SYNTH ?= synth_ice40
-GHDL        ?= ghdl
-GHDL_FLAGS  += --std=08
-GHDL_SYNTH  ?= ghdl
-YOSYS       ?= yosys
-NEXTPNR     ?= nextpnr-ice40
-ICEPACK     ?= icepack
+GHDL          ?= ghdl
+GHDL_SYNTH    ?= ghdl
+YOSYS         ?= yosys
+YOSYS_SYNTH   ?= synth_ice40
+NEXTPNR       ?= nextpnr-ice40
+ICEPACK       ?= icepack
+
+GHDL_FLAGS    += --std=08
+YOSYS_FLAGS   += -q
+NEXTPNR_FLAGS += -q
 
 VHDL_SYN_FILES = \
 	src/cfg_pkg.vhd \
@@ -28,10 +33,10 @@ VHDL_SYN_FILES = \
 	src/sync_st.vhd \
 	src/Design_Top.vhd \
 	src/pattern.vhd \
-	board/ICE40_components_pkg.vhd \
-	board/ICE40_PLL_config_pkg.vhd \
+	device/ICE40/ICE40_components_pkg.vhd \
+	device/ICE40/ICE40_PLL_config_pkg.vhd \
 	$(BOARD_FILES) \
-	board/$(BOARD_TOP).vhd
+	board/$(VGA_BOARD)/$(BOARD_TOP).vhd
 
 all: vgatest.bin
 	@true
@@ -48,7 +53,9 @@ vgatest.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
 
 vgatest.asc: vgatest.json
 	$(NEXTPNR) \
-		$(PNRFLAGS) \
+		$(NEXTPNR_FLAGS) \
+		--$(DEVICE) --package $(PACKAGE) \
+		--pcf board/$(VGA_BOARD)/$(VGA_BOARD).pcf \
 		--json $< \
 		--asc $@
 
