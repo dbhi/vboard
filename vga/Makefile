@@ -2,6 +2,7 @@ ifeq ($(VGA_BOARD),tinyfpgabx)
 # TinyFPGA-BX
 DEVICE = lp8k
 PACKAGE = cm81
+CONSTRAINTS_NAME = TinyFPGA-BX
 BOARD_TOP = TinyFPGABX_Top
 BOARD_FILES = board/$(VGA_BOARD)/TinyFPGABX_PLL_config_pkg.vhd
 else
@@ -9,6 +10,7 @@ else
 VGA_BOARD = icestick
 DEVICE = hx1k
 PACKAGE = tq144
+CONSTRAINTS_NAME = IceStick
 BOARD_TOP = Icestick_Top
 BOARD_FILES = board/$(VGA_BOARD)/Icestick_PLL_config_pkg.vhd
 $(info Default VGA_BOARD value: 'icestick' (allowed: 'tinyfpgabx' or 'icestick'))
@@ -55,8 +57,8 @@ vgatest.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
 vgatest.asc: vgatest.json
 	$(NEXTPNR) \
 		$(NEXTPNR_FLAGS) \
-		--$(DEVICE) --package $(PACKAGE) \
-		--pcf board/$(VGA_BOARD)/$(VGA_BOARD).pcf \
+		--$(DEVICE) --package "$(PACKAGE)" \
+		--pcf "../constraints/boards/$(CONSTRAINTS_NAME)/constraints.pcf" \
 		--json $< \
 		--asc $@
 
