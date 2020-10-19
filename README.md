@@ -25,9 +25,12 @@ The purpose of this repository is to document the APIs that are used between the
 
 All of these can be executed on high-performance workstations or on low-cost SBCs. Some solutions are available on Android smartphones/tablets too.
 
-## Ideas
+## Virtual peripherals
 
-- VGA screen.
+- [VGA screen](vga)
+
+### Ideas
+
 - Line follower robot.
 - BLDC motor.
 - GPS sensor.
@@ -35,7 +38,7 @@ All of these can be executed on high-performance workstations or on low-cost SBC
 
 ## References
 
-- [ghdl/ghdl-cosim](https://github.com/ghdl/ghdl-cosim) ([VGA (RGB image buffer)](https://ghdl.github.io/ghdl-cosim/vhpidirect/examples/arrays.html#vga-rgb-image-buffer))
+- [ghdl/ghdl-cosim](https://github.com/ghdl/ghdl-cosim)
 - [gitter.im/ghdl1/Lobby: 2019/07/12 8:12AM](https://gitter.im/ghdl1/Lobby?at=5d2824c0c3740260bb093989)
 - [VUnit/cosim](https://github.com/VUnit/cosim)
   - [VUnit/vunit#568](https://github.com/VUnit/vunit/pull/568)
