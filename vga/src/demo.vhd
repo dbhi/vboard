@@ -5,7 +5,7 @@ use work.VGA_config.all;
 
 architecture demo of Design_Top is
 
-  constant cfg : VGA_config := VGA_configs(G_SCREEN);
+  constant cfg : VGA_config_t := VGA_configs(G_SCREEN);
 
   constant ymid : integer range -1 to cfg.height := cfg.height/2;
   constant xmid : integer range -1 to cfg.width  := cfg.width/2;
@@ -30,9 +30,7 @@ architecture demo of Design_Top is
 begin
 
   i_sync: entity work.VGA_sync_gen_cfg
-  generic map (
-    CONFIG => cfg
-  )
+  generic map ( cfg )
   port map (
     CLK   => CLK,
     EN    => EN,

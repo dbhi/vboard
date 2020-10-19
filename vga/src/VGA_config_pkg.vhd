@@ -1,6 +1,6 @@
 package VGA_config is
 
-type VGA_config is record
+type VGA_config_t is record
   width  : natural; -- W: width
   height : natural; -- H: height
   rate   : natural; -- R: refresh rate
@@ -19,7 +19,7 @@ end record;
 --   __                     __
 -- _|  |XXXXXXX________XXXX|
 
-type VGA_configs_t is array (natural range <>) of VGA_config;
+type VGA_configs_t is array (natural range <>) of VGA_config_t;
 constant VGA_configs : VGA_configs_t(0 to 61) := (
 --           W      H     R        C    hS    hF    hB  vS    vF   vB      hP      vP
    0 => (  640,   350,   70,   25175,   96,   48,   16,  2,   60,  37,  false,   true ),

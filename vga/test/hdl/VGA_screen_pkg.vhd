@@ -1,7 +1,7 @@
 library ieee;
 context ieee.ieee_std_context;
 
-package pkg is
+package VGA_screen_pkg is
   generic (
     G_WIDTH  : natural := 640;
     G_HEIGHT : natural := 480
@@ -12,9 +12,6 @@ package pkg is
             natural range 0 to G_WIDTH-1 ) of integer;
 
   shared variable screen: screen_t;
-
-  procedure sim_init (width, height: natural);
-  attribute foreign of sim_init : procedure is "VHPIDIRECT sim_init";
 
   -- TODO: pass a fat pointer, so that width and height need not to be passed explicitly
   procedure save_screenshot (
@@ -31,13 +28,9 @@ package pkg is
 
   function RGB_to_integer (rgb: std_logic_vector(2 downto 0)) return integer;
 
-end pkg;
+end VGA_screen_pkg;
 
-package body pkg is
-
-  procedure sim_init (width, height: natural) is
-  begin report "VHPIDIRECT sim_init" severity failure;
-  end procedure;
+package body VGA_screen_pkg is
 
   procedure save_screenshot (
     variable ptr: screen_t;
@@ -65,4 +58,4 @@ package body pkg is
     return to_integer(unsigned(raw24));
   end function;
 
-end pkg;
+end VGA_screen_pkg;

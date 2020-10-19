@@ -35,7 +35,7 @@ begin
   begin
     if rising_edge(CLK) then
       if RST then
-        st <= 0;
+        st <= 2;
       else
         if EN and p_tc then
           st <= 0 when st = 3 else st + 1;

@@ -50,6 +50,12 @@ Then, load the bitstream to the board. The following pattern should be shown in 
 
 ![VGA demo pattern](vga_demo.png)
 
+### Test
+
+Sources in [test/hdl/](test/hdl) provide a *Virtual VGA screen* based on the [VGA (RGB image buffer)](https://ghdl.github.io/ghdl-cosim/vhpidirect/examples/arrays.html#vga-rgb-image-buffer) from [ghdl.github.io/ghdl-cosim](https://ghdl.github.io/ghdl-cosim). A VGA monitor (VHDL) reads the output of the UUT and draws frames in a buffer, packing the colours of each pixel in a 32 bit `integer`. After each frame is complete, foreign subprogram `save_screenshot` is executed. Just before finishing the simulation, foreign subprogram `sim_cleanup` is executed.
+
+[test/hdl/imagemagick/](test/hdl/imagemagick) provides a backend for the virtual screen based on [Imagemagick](https://www.imagemagick.org/). `save_screenshot` saves each frame to a binary file in RGB24 format. Then, `convert` from Imagemagick is used for generating a PNG screenshot. In `sim_cleanup`, `convert` is used for merging all the PNGs into an animated GIF. Images are saved to `test/hdl/imagemagick/out/`.
+
 ## Development
 
 Currently, the only supported build system is a [Makefile](Makefile). However, we are willing to support the following managers/runners:

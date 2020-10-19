@@ -1,9 +1,9 @@
 library ieee;
 context ieee.ieee_std_context;
 
-use work.vga_cfg_pkg.all;
+use work.VGA_config.all;
 
-entity vga_screen is
+entity VGA_screen is
   generic (
     G_SCREEN  : natural;
     G_WWIDTH  : natural := 0; -- X11 window width
@@ -16,8 +16,8 @@ entity vga_screen is
     RGB:   in std_logic_vector(2 downto 0);
     VID:   in std_logic
   );
-  constant cfg: VGA_config := VGA_configs(G_SCREEN);
-  package tb_pkg is new work.pkg
+  constant cfg: VGA_config_t := VGA_configs(G_SCREEN);
+  package tb_pkg is new work.VGA_screen_pkg
     generic map (
       G_WIDTH  => cfg.width,
       G_HEIGHT => cfg.height
@@ -25,7 +25,7 @@ entity vga_screen is
   use tb_pkg.all;
 end entity;
 
-architecture arch of vga_screen is
+architecture arch of VGA_screen is
 
   constant clk_period : time := (1.0/real(cfg.clk)) * 1 ms;
 
@@ -36,36 +36,10 @@ architecture arch of vga_screen is
 
 begin
 
-  proc_init: process
-  begin
-    -- X11 window size
-    if G_WWIDTH /= 0 and G_WHEIGHT /= 0 then
-      sim_init(G_WWIDTH, G_WHEIGHT);
-    else
-      sim_init(cfg.width, cfg.height);
-    end if;
-    wait;
-  end process;
+  clk <= not clk after clk_period/2;
 
-  proc_clk: process
-  begin
-    clk <= '0'; wait for clk_period/2;
-    clk <= '1'; wait for clk_period/2;
-  end process;
-
-  i_sync: entity work.vga_sync_gen
-    generic map (
-      G_HPULSE => cfg.hpulse,
-      G_HFRONT => cfg.hfront,
-      G_WIDTH  => cfg.width,
-      G_HBACK  => cfg.hback,
-      G_HPOL   => cfg.hpol,
-      G_VPULSE => cfg.vpulse,
-      G_VFRONT => cfg.vfront,
-      G_HEIGHT => cfg.height,
-      G_VBACK  => cfg.vback,
-      G_VPOL   => cfg.vpol
-    )
+  i_sync: entity work.VGA_sync_gen_cfg
+    generic map ( cfg )
     port map (
       CLK   => clk,
       EN    => '1',
@@ -115,6 +89,7 @@ begin
       if rising_edge(clk) then
         sync(1) <= sync(0);
         if sync="01" then
+          report "save screenshot " & to_string(frame) severity note;
           save_screenshot(
             screen,
             screen'length(2), --width

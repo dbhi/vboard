@@ -4,10 +4,6 @@
 #include <stdint.h>
 #include <string.h>
 
-void sim_init(uint32_t width, uint32_t height) {
-  printf("sim_init is not required, thus empty, in this implementation\n");
-}
-
 void integer_to_raw24(int32_t *ptr, uint32_t width, uint32_t height, uint8_t *raw24) {
   int x, y;
   uint32_t *q = ptr;
@@ -23,6 +19,10 @@ void integer_to_raw24(int32_t *ptr, uint32_t width, uint32_t height, uint8_t *ra
 }
 
 void save_screenshot(int32_t *ptr, uint32_t width, uint32_t height, int id) {
+  if ( id == 0 ) {
+    return;
+  }
+
   assert(ptr != NULL);
 
   uint8_t *raw24 = malloc(width * height * 3);

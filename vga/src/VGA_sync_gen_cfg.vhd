@@ -1,11 +1,11 @@
 library ieee;
 context ieee.ieee_std_context;
 
-use work.VGA_config.all;
+use work.VGA_config.VGA_config_t;
 
 entity VGA_sync_gen_cfg is
   generic (
-    CONFIG: VGA_config
+    CONFIG: VGA_config_t
   );
   port (
     CLK:   in  std_logic;
