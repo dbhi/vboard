@@ -8,13 +8,13 @@ use work.VGA_config.all;
 
 entity tb_vga is
   generic (
-    G_SCREEN : natural := 22
+    SCREEN : natural := 22
   );
 end entity;
 
 architecture arch of tb_vga is
 
-  constant clk_period : time := (1.0/real(VGA_configs(G_SCREEN).clk)) * 1 ms;
+  constant clk_period : time := (1.0/real(VGA_configs(SCREEN).clk)) * 1 ms;
   signal clk, rst, save_video: std_logic := '0';
 
   type vga_t is record
@@ -45,7 +45,7 @@ begin
 
   VIRT_VGA: entity work.VGA_screen
     generic map (
-      G_SCREEN => G_SCREEN
+      SCREEN => SCREEN
     )
     port map (
       RST   => rst,
@@ -57,7 +57,7 @@ begin
 
   UUT: entity work.Design_Top(demo)
     generic map (
-      G_SCREEN => G_SCREEN
+      SCREEN => SCREEN
     )
     port map (
       CLK   => clk,
