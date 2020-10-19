@@ -1,3 +1,5 @@
+from fpga import Project
+
 # Tool names/aliases as lists. This allows replacing them with containers
 TOOLS = {
     'yosys': ['yosys'],
@@ -35,8 +37,8 @@ DESIGN_SRCS = [
 # Fileset-1
 # VHDL | implementation
 ICE40_SRCS = [
-    'board/ICE40_components_pkg.vhd',
-    'board/ICE40_PLL_config_pkg.vhd'
+    'device/ICE40/ICE40_components_pkg.vhd',
+    'device/ICE40/ICE40_PLL_config_pkg.vhd'
 ]
 
 # Fileset-2
@@ -47,16 +49,16 @@ ICESTICK = {
     ],
     # VHDL | implementation
     'srcs': [
-        'board/Icestick_PLL_config_pkg.vhd',
-        'board/Icestick_Top.vhd'
+        'board/icestick/Icestick_PLL_config_pkg.vhd',
+        'board/icestick/Icestick_Top.vhd'
     ]
 }
 
 # Fileset-3
 # VHDL | implementation
 TINYFPGA_SRCS = [
-    'board/TinyFPGABX_PLL_config_pkg.vhd',
-    'board/TinyFPGABX_Top.vhd'
+    'board/tinyfpgabx/TinyFPGABX_PLL_config_pkg.vhd',
+    'board/tinyfpgabx/TinyFPGABX_Top.vhd'
 ]
 # Fileset-4
 # Constraints | implementation
@@ -108,36 +110,11 @@ TASKS = {
 # YosysVivado: ghdl-yosy-plugin + Yosys for synthesis, and Vivado for implementation.
 # VUnitJSON: generate a JSON file describing the filesets and params to be imported in VUnit `run.py` files.
 
-
-def run_cmd(cmd):
-    print(cmd)
-
-
-def run_yosys(task):
-    run_cmd(TOOLS['yosys'] + FLAGS['yosys'] + [
-        '-p',
-        ' '.join(TOOLS['ghdl.plugin']) + ' ' +
-        ' '.join(FLAGS['ghdl.synth']) + ' ' +
-        ' '.join(task['srcs']) + '-e; ' +
-        ' '.join(TOOLS['yosys.synth']) +
-        (' -top %s' % task['top']) +
-        ' -json vgatest.json'
-    ])
-
-
-def run_nextpnr(task):
-    # extract device and package from task['part']
-    # join constraints file list
-    run_cmd(TOOLS['nextpnr'] + FLAGS['nextpnr'])
-
-
-def gen_bitstream(task):
-    run_cmd(TOOLS['icepack'])
-
-
 for key, task in TASKS.items():
     print('> %s' % key)
-    run_yosys(task)
-    run_nextpnr(task)
-    gen_bitstream(task)
-    print()
+    prj = Project('openflow')
+    prj.set_part(task['part'])
+    for file in task['srcs']+task['constraints']:
+        prj.add_files(file)
+    prj.set_top(task['top'])
+    prj.generate()
