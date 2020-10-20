@@ -45,7 +45,7 @@ begin
 
   VIRT_VGA: entity work.VGA_screen
     generic map (
-      SCREEN => SCREEN
+      G_SCREEN => SCREEN
     )
     port map (
       RST   => rst,
@@ -57,7 +57,7 @@ begin
 
   UUT: entity work.Design_Top(demo)
     generic map (
-      SCREEN => SCREEN
+      G_SCREEN => SCREEN
     )
     port map (
       CLK   => clk,
