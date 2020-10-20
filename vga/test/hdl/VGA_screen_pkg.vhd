@@ -50,12 +50,12 @@ package body VGA_screen_pkg is
     variable raw24: std_logic_vector(31 downto 0);
   begin
     raw24 := (
-      7  downto 0  => rgb(0),
+      7  downto 0  => rgb(2),
       15 downto 8  => rgb(1),
-      23 downto 16 => rgb(2),
-         others    => '0'
+      23 downto 16 => rgb(0),
+         others    => '1'
     );
-    return to_integer(unsigned(raw24));
+    return to_integer(signed(raw24));
   end function;
 
 end VGA_screen_pkg;

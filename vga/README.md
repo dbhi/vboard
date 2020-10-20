@@ -66,15 +66,27 @@ Sources in [test/hdl/](test/hdl) provide a *Virtual VGA screen* based on the [VG
   <img src="./test/tb_vga.png"/>
 </p>
 
-### Imagemagick
+### Imagemagick (animated GIF)
 
-[test/hdl/imagemagick/](test/hdl/imagemagick) provides a backend for the virtual screen based on [Imagemagick](https://www.imagemagick.org/). `save_screenshot` saves each frame to a binary file in RGB24 format. Then, `convert` from Imagemagick is used for generating a PNG screenshot. In `sim_cleanup`, `convert` is used for merging all the PNGs into an animated GIF. Execute the run script for running the simulation:
+[test/imagemagick/](test/imagemagick) provides a backend for the virtual screen based on [Imagemagick](https://www.imagemagick.org/). `save_screenshot` saves each frame to a binary file in RGB24 format. Then, `convert` from Imagemagick is used for generating a PNG screenshot. In `sim_cleanup`, `convert` is used for merging all the PNGs into an animated GIF. Execute the run script for running the simulation:
 
 ```sh
-./test/hdl/imagemagick/run.sh
+./test/imagemagick/run.sh
 ```
 
-Images are saved to `test/hdl/imagemagick/out/`.
+Images are saved to `test/imagemagick/out/`.
+
+### Tkinter (desktop window)
+
+[test/tkinter/](test/tkinter) provides a backend for the virtual screen based on [tkinter](https://docs.python.org/3/library/tkinter.html), the built-in Python interface to Tcl/Tk. The Tk GUI toolkit is available on most Unix platforms, as well as on Windows systems. [NumPy](https://numpy.org/)'s [ctypeslib](https://numpy.org/doc/stable/reference/routines.ctypeslib.html) and [Pillow](https://python-pillow.org/)'s [ImageTk](https://pillow.readthedocs.io/en/stable/reference/ImageTk.html) are used for transforming the VHDL buffer to an image and for displaying the frames in a desktop window. After installing the dependencies, execute the run script for running the simulation:
+
+```sh
+./test/tkinter/run.sh
+```
+
+A windows is shown on the desktop and it is updated after each frame is captured by the VHDL VGA monitor.
+
+> NOTE: On MSYS2's MINGW64, `numpy` needs to be installed through `pacman`. Furthermore, installing `Pillow` through `pip` requires the packages listed in [pillow.rtfd.io: Building on Windows using MSYS2/MinGW](https://pillow.readthedocs.io/en/stable/installation.html#building-on-windows-using-msys2-mingw).
 
 ## Development
 
