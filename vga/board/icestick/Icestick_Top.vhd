@@ -11,19 +11,12 @@ entity Icestick_Top is
     SCREEN : natural := 22
   );
   port (
-    CLK : in std_logic; -- System clock (12 Mhz)
-
-    PMOD7 : out std_logic; -- VGA vsync
-    PMOD8 : out std_logic; -- VGA HSync
-    PMOD1 : out std_logic; -- VGA R
-    PMOD2 : out std_logic; -- VGA G
-    PMOD3 : out std_logic; -- VGA B
-
-    LED1 : out std_logic;
-    LED2 : out std_logic;
-    LED3 : out std_logic;
-    LED4 : out std_logic;
-    LED5 : out std_logic
+    IceStick_CLK   : in  std_logic; -- System clock (12 Mhz)
+    IceStick_PMOD7 : out std_logic; -- VGA vsync
+    IceStick_PMOD8 : out std_logic; -- VGA HSync
+    IceStick_PMOD1 : out std_logic; -- VGA R
+    IceStick_PMOD2 : out std_logic; -- VGA G
+    IceStick_PMOD3 : out std_logic -- VGA B
   );
 end;
 
@@ -42,7 +35,7 @@ begin
     DIVQ => to_unsigned( PLL_cfg.DIVQ, 3)
   )
   port map (
-    REFERENCECLK => CLK,
+    REFERENCECLK => IceStick_CLK,
     PLLOUTCORE   => clki,
     BYPASS       => '0',
     RESETB       => '1'
@@ -56,19 +49,13 @@ begin
     CLK   => clki,
     EN    => '1',
     RST   => '0',
-    HSYNC => PMOD8,
-    VSYNC => PMOD7,
+    HSYNC => IceStick_PMOD8,
+    VSYNC => IceStick_PMOD7,
     RGB   => rgb
   );
 
-  PMOD1 <= rgb(2);
-  PMOD2 <= rgb(1);
-  PMOD3 <= rgb(0);
-
-  LED1 <= '0';
-  LED2 <= '0';
-  LED3 <= '0';
-  LED4 <= '0';
-  LED5 <= '1';
+  IceStick_PMOD1 <= rgb(2);
+  IceStick_PMOD2 <= rgb(1);
+  IceStick_PMOD3 <= rgb(0);
 
 end;

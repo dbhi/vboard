@@ -11,16 +11,16 @@ entity TinyFPGABX_Top is
     SCREEN : natural := 22
   );
   port (
-    CLK    : in  std_logic; -- System clock (16 Mhz)
-    PIN_15 : in  std_logic; -- Reset
+    TinyFPGABX_CLK    : in  std_logic; -- System clock (16 Mhz)
+    TinyFPGABX_PIN_15 : in  std_logic; -- Reset
 
-    USBPU  : out std_logic; -- USB pull resistor
+    TinyFPGABX_USBPU  : out std_logic; -- USB pull resistor
 
-    PIN_13 : out std_logic; -- VGA VSync
-    PIN_12 : out std_logic; -- VGA HSync
-    PIN_11 : out std_logic; -- VGA R
-    PIN_10 : out std_logic; -- VGA G
-    PIN_9  : out std_logic  -- VGA B
+    TinyFPGABX_PIN_13 : out std_logic; -- VGA VSync
+    TinyFPGABX_PIN_12 : out std_logic; -- VGA HSync
+    TinyFPGABX_PIN_11 : out std_logic; -- VGA R
+    TinyFPGABX_PIN_10 : out std_logic; -- VGA G
+    TinyFPGABX_PIN_9  : out std_logic  -- VGA B
   );
 end;
 
@@ -34,7 +34,7 @@ architecture arch of TinyFPGABX_Top is
 begin
 
   -- Drive USB pull-up resistor to '0' to disable USB
-  USBPU <= '0';
+  TinyFPGABX_USBPU <= '0';
 
   PLL_0: SB_PLL40_CORE
   generic map (
@@ -42,7 +42,7 @@ begin
     DIVQ => to_unsigned( PLL_cfg.DIVQ, 3)
   )
   port map (
-    REFERENCECLK => CLK,
+    REFERENCECLK => TinyFPGABX_CLK,
     PLLOUTCORE   => clki,
     BYPASS       => '0',
     RESETB       => '1'
@@ -55,14 +55,14 @@ begin
   port map (
     CLK   => clki,
     EN    => '1',
-    RST   => PIN_15,
-    HSYNC => PIN_12,
-    VSYNC => PIN_13,
+    RST   => TinyFPGABX_PIN_15,
+    HSYNC => TinyFPGABX_PIN_12,
+    VSYNC => TinyFPGABX_PIN_13,
     RGB   => rgb
   );
 
-  PIN_11 <= rgb(2);
-  PIN_10 <= rgb(1);
-  PIN_9  <= rgb(0);
+  TinyFPGABX_PIN_11 <= rgb(2);
+  TinyFPGABX_PIN_10 <= rgb(1);
+  TinyFPGABX_PIN_9  <= rgb(0);
 
 end;
