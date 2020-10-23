@@ -110,6 +110,16 @@ A windows is shown on the desktop and it is updated after each frame is captured
 - At the top of the [Makefile](Makefile), add the variable values corresponding to the added board.
 - [Open a Pull Request](https://github.com/dbhi/vboard/compare)!
 
+### How to use the virtual VGA screen in existing VHDL designs
+
+- Add this repository as a submodule of your repo.
+- Copy `test/hdl/VGA_tb.vhd` somewhere outside of the submodule.
+- Copy `test/imagemagick/run.sh` and/or `test/tkinter/run.sh` somewhere outside of the submodule.
+- Modify the paths in the `run.sh` file(s) for pointing to:
+  - The sources of your own design.
+  - The auxiliary files in the submodule.
+- Execute the `run.sh` script(s).
+
 ### How to implement a different virtual VGA backend
 
 Any application/library which satisfies the following C prototypes can be used as a backend:
