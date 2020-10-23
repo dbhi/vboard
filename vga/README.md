@@ -84,7 +84,7 @@ Images are saved to `test/imagemagick/out/`.
 ./test/tkinter/run.sh
 ```
 
-A windows is shown on the desktop and it is updated after each frame is captured by the VHDL VGA monitor.
+A window is shown on the desktop and it is updated after each frame is captured by the VHDL VGA monitor.
 
 > NOTE: On MSYS2's MINGW64, `numpy` needs to be installed through `pacman`. Furthermore, installing `Pillow` through `pip` requires the packages listed in [pillow.rtfd.io: Building on Windows using MSYS2/MinGW](https://pillow.readthedocs.io/en/stable/installation.html#building-on-windows-using-msys2-mingw).
 
