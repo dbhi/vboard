@@ -16,8 +16,6 @@ The sources of this component are organised as follows:
 - `src`: HDL sources of the component, which are common for simulation and/or synthesis, and for any target.
 - `test`: resources for simulation (testing and verification), including testbenches, unit tests and co-simulation cores (such as a virtual screen).
 
-Users willing to write their own applications/designs with VGA output are encouraged to clone this component and to adapt [demo.vhd](src/demo.vhd) for plugging their designs. The synchronism generation module (`VGA_sync_gen` or `VGA_sync_gen_cfg`) can be preserved, so that only the application logic needs to be described.
-
 ## Standing on the shoulders of...
 
 The structure of this repository was heavily inspired by [PLC2/Solution-StopWatch](https://github.com/PLC2/Solution-StopWatch); the solution used by [Patrick Lehmann](https://github.com/Paebbels) in [PLC2](https://www.plc2.com)'s 5-day class [Professional VHDL](https://www.plc2.com/en/training/detail/professional-vhdl).
@@ -29,6 +27,16 @@ The makefile for mixed language synthesis using open source tooling ([GHDL](http
 Unlike all previous references, where ad-hoc constraint files (`*.xdc`, `*.pcf`, etc.) are used, here implementation constraint are imported from an open source repository. [hdl/constraints](https://github.com/hdl/constraints/) (based on [VLSI-EDA/PoC: ucf/](https://github.com/VLSI-EDA/PoC/tree/master/ucf)) is a submodule of this repository, and constraints are imported from there.
 
 Co-simulation and the virtual screen are implemented using GHDL's VHPIDIRECT examples from [ghdl/ghdl-cosim](https://github.com/ghdl/ghdl-cosim). See [[LCS-202x] VHDL DPI/FFI based on GHDL’s implementation of VHPIDIRECT](https://umarcor.github.io/ghdl-cosim/vhdl202x/).
+
+## Design
+
+The core of the design (the UUT) is a parameterised synchronism generator (`VGA_sync_gen`), built by chaining two instances of a four state machine and a counter (`VGA_sync_gen_idx`). Those components can be used standalone, by providing porch and pulse durations through generics. However, `VGA_config` contains a record type that wraps all the parameters in a single object. `VGA_sync_gen_cfg` allows instantiating the synchronism generator by passing a single generic of the given record type.
+
+In the [demo](src/demo.vhd) architecture, the synchronism generator is instantiated and an static pattern is generated in a process. Users willing to write their own applications/designs with VGA output are encouraged to to adapt [demo.vhd](src/demo.vhd) for plugging their designs. The synchronism generation module (`VGA_sync_gen` or `VGA_sync_gen_cfg`) can be preserved, so that only the application logic needs to be described.
+
+Note that the UUT (`Design_Top`) does not include any conversion of the input clock frequency. Any instantiation of PLLs or other clock management units should be done in sources specific to some device (in `device/`) or to some board (in `board/`). The clock input to the UUT should match the expect pixel clock frequency.
+
+On the other hand, the *virtual VGA screen* used for testing (see below) is also based on the same synchronism generator component. However, the generator of the UUT and the one in the virtual screen component are unrelated. Only VSYNC and HSYNC are connected between them. Precisely, the virtual screen uses the edges of VSYNC for synchronising frame captures. As a result, simulation and capture is slow, but it tries to accurately model the behaviour of an external VGA device.
 
 ## Usage
 
