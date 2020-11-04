@@ -1,6 +1,7 @@
 openflow:
-    oci:
-        engine:
-            command: docker
-            volumes: ["$HOME:$HOME"]
-            work: $PWD
+  oci:
+    engine:
+      command: docker
+      volumes:
+        - '/$(pwd)/../..:/$(pwd)/../..'
+      work: '/$(pwd)'
