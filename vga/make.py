@@ -69,20 +69,28 @@ TINYFPGA_CONSTRAINTS = [
 #-
 
 TASKS = {
-    'icestick': { # Class YosysNextpnr
-        'top': 'Icestick_Top',
-        'arch': '',
-        'part': 'hx1k-tq144',
-        'srcs': DESIGN_SRCS + ICE40_SRCS + ICESTICK['srcs'],
-        'constraints': ICESTICK['constraints']
-    },
-    'tinyfpgabx': { # Class YosysNextpnr
-        'top': 'TinyFPGABX_Top',
-        'arch': '',
-        'part': 'lp8k-cm81',
-        'srcs': DESIGN_SRCS + ICE40_SRCS + TINYFPGA_SRCS,
-        'constraints': TINYFPGA_CONSTRAINTS
-    }
+    'icestick': Project(
+        tool='openflow',
+        project='icestick',
+        init={
+            'top': 'Icestick_Top',
+            'arch': '',
+            'part': 'hx1k-tq144',
+            'vhdl': DESIGN_SRCS + ICE40_SRCS + ICESTICK['srcs'],
+            'constraint': ICESTICK['constraints']
+        }
+     ),
+    'tinyfpgabx': Project(
+        tool='openflow',
+        project='tinyfpgabx',
+        init={
+            'top': 'TinyFPGABX_Top',
+            'arch': '',
+            'part': 'lp8k-cm81',
+            'vhdl': DESIGN_SRCS + ICE40_SRCS + TINYFPGA_SRCS,
+            'constraint': TINYFPGA_CONSTRAINTS
+        }
+    )
     #'pynq': { # Class Vivado, GhdlVivado and/or YosysVivado
     #    'top': '',
     #    'arch': '',
@@ -106,11 +114,5 @@ TASKS = {
 # YosysVivado: ghdl-yosy-plugin + Yosys for synthesis, and Vivado for implementation.
 # VUnitJSON: generate a JSON file describing the filesets and params to be imported in VUnit `run.py` files.
 
-for key, task in TASKS.items():
-    print('> %s' % key)
-    prj = Project('openflow')
-    prj.set_part(task['part'])
-    for file in task['srcs']+task['constraints']:
-        prj.add_files(file)
-    prj.set_top(task['top'])
-    prj.generate()
+for task in TASKS:
+    TASKS[task].generate()

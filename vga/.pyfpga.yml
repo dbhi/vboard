@@ -1,0 +1,6 @@
+openflow:
+    oci:
+        engine:
+            command: docker
+            volumes: ["$HOME:$HOME"]
+            work: $PWD
