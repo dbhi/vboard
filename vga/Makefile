@@ -54,6 +54,15 @@ vgatest.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
 		-top $(BOARD_TOP) \
 		-json $@" 2>&1 | tee yosys-report.txt
 
+# To be drawn with netlistsvg
+vganet.json: $(VHDL_SYN_FILES) $(VERILOG_SYN_FILES)
+	$(YOSYS) $(YOSYS_FLAGS) \
+		-p \
+		"$(GHDL_SYNTH) $(GHDL_FLAGS) $(VHDL_SYN_FILES) -e; \
+		prep \
+		-top $(BOARD_TOP); \
+		write_json $@;" 2>&1 | tee yosys-report.txt
+
 vgatest.asc: vgatest.json
 	$(NEXTPNR) \
 		$(NEXTPNR_FLAGS) \
