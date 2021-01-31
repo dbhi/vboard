@@ -14,8 +14,8 @@ The purpose of this repository is to document the APIs used between the frontend
 
 ## Development environment
 
-- Frontend: See [OSVB: Simulators|Compilers](https://umarcor.github.io/osvb/sim/index.html) and  [OSVB: Frameworks and Methodologies](https://umarcor.github.io/osvb/prj/index.html).
-- Transport: VPI/DPI, VHPI/VFFI/VDPI, etc. See [OSVB: Co-simulation](https://umarcor.github.io/osvb/cosim/index.html).
+- Frontend: See [OSVB: Simulators | Compilers](https://umarcor.github.io/osvb/intro/sim.html) and [OSVB: Frameworks and Methodologies](https://umarcor.github.io/osvb/intro/frameworks.html).
+- Transport: VPI/DPI, VHPI/VFFI/VDPI, etc. See [OSVB: Co-simulation](https://umarcor.github.io/osvb/intro/cosim.html).
 - Backend: ImageMagick, Xlib, Gtk, Qt, HTML/JS/CSS, [DBHI](https://dbhi.github.io/), etc.
 
 All of these simulators and virtual peripherals can be executed on high-performance workstations or on low-cost SBCs. Some solutions are available on Android smartphones/tablets too. See [hdl/packages](https://github.com/hdl/packages) for further info about packaging/distribution alternatives for open source EDA tooling.
@@ -23,7 +23,7 @@ All of these simulators and virtual peripherals can be executed on high-performa
 Tha main languages used for interfacing HDLs (VHDL, Verilog and/or System Verilog) with foreign languages are C/C++, since standard co-simulation interfaces are defined in those terms. However, several languages have built-in support for interacting with shared libraries and executable binaries using C semantics. Python, Rust or Julia, to name a few, provide built-in features for doing so. Moreover, [libffi](https://en.wikipedia.org/wiki/Libffi) provides a generalized solution for defining
 target functions at runtime, instead of compile time.
 
-With regard to distribution, there is work in progress for using `*.core` (YAML) files as a portable solution for defining filesets. See [OSVB: pyCAPI](https://umarcor.github.io/osvb/pyCAPI/index.html).
+With regard to distribution, there is work in progress for using `*.core` (YAML) files as a portable solution for defining filesets. See [OSVB: Core](https://umarcor.github.io/osvb/apis/core.html).
 
 ## Virtual peripherals
 
