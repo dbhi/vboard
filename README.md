@@ -34,10 +34,16 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
 - Line follower robot.
 - BLDC motor.
 - GPS sensor.
+- Virtual Nexy-4 like board ([gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board](https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board)):
+
+<p align="center">
+  <a href="https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board"><img src="https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board/-/raw/master/images/screenshot_main_window.png"/></a>
+</p>
+
 - Visualization of hyperspectral/multispectral image processing cores ([VUnit/vunit#568](https://github.com/VUnit/vunit/pull/568)):
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/38422348/58502061-0c17d500-8186-11e9-8aed-7536f5737f32.gif"/>
+  <a href="https://github.com/VUnit/vunit/pull/568"><img src="https://user-images.githubusercontent.com/38422348/58502061-0c17d500-8186-11e9-8aed-7536f5737f32.gif"/></a>
 </p>
 
 ## References
