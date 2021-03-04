@@ -55,6 +55,7 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
 - [hackfin/ghdlex](https://github.com/hackfin/ghdlex)
   - https://section5.ch/doc/ghdlex/html/index.html
   - [hackfin/MaSoCist](https://github.com/hackfin/MaSoCist)
+- [olofk/verilatio](https://github.com/olofk/verilatio)
 - [MathInspector/MathInspector](https://github.com/MathInspector/MathInspector)
   - [What's New in Math Inspector Beta](https://www.youtube.com/watch?v=M7U8dgPo0Bw)
   - [The Math Inspector Source Code](https://www.youtube.com/watch?v=hUHiihuOt2A)
