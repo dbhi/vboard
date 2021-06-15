@@ -52,6 +52,8 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
 - [gitter.im/ghdl1/Lobby: 2019/07/12 8:12AM](https://gitter.im/ghdl1/Lobby?at=5d2824c0c3740260bb093989)
 - [VUnit/cosim](https://github.com/VUnit/cosim)
 - [renode.io](https://renode.io/)
+  - [antmicro/renode-board-visualization](https://github.com/antmicro/renode-board-visualization)
+    - Related to [hdl/constraints](https://github.com/hdl/constraints), and [j0ono0/pinout](https://github.com/j0ono0/pinout/) ([hdl/constraints#3](https://github.com/hdl/constraints/issues/3))
 - [hackfin/ghdlex](https://github.com/hackfin/ghdlex)
   - https://section5.ch/doc/ghdlex/html/index.html
   - [hackfin/MaSoCist](https://github.com/hackfin/MaSoCist)
