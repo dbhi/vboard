@@ -58,6 +58,7 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
   - https://section5.ch/doc/ghdlex/html/index.html
   - [hackfin/MaSoCist](https://github.com/hackfin/MaSoCist)
 - [sylefeb/Silice: Silice Verilator graphical simulation framework](https://github.com/sylefeb/Silice/tree/draft/frameworks/verilator)
+- [yaqwsx/Pinion](https://github.com/yaqwsx/Pinion): *generate interactive and nice-looking diagrams for your PCBs!* ([yaqwsx.github.io/Pinion](https://yaqwsx.github.io/Pinion/))
 - [olofk/verilatio](https://github.com/olofk/verilatio)
 - [MathInspector/MathInspector](https://github.com/MathInspector/MathInspector)
   - [What's New in Math Inspector Beta](https://www.youtube.com/watch?v=M7U8dgPo0Bw)
