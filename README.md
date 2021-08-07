@@ -34,7 +34,7 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
 - Line follower robot.
 - BLDC motor.
 - GPS sensor.
-- Virtual Nexy-4 like board ([gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board](https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board)):
+- Virtual Nexys-4 like board ([gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board](https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board)):
 
 <p align="center">
   <a href="https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board"><img src="https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board/-/raw/master/images/screenshot_main_window.png"/></a>
