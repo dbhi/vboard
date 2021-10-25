@@ -72,6 +72,7 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
   - [sehugg/8bitworkshop](https://github.com/sehugg/8bitworkshop)
   - https://8bitworkshop.com/redir.html?platform=verilog
 - [adumont/hrm-cpu@master/gui](https://github.com/adumont/hrm-cpu/tree/master/gui)
+- [stevenbell/animatetiming](https://github.com/stevenbell/animatetiming)
 - [isotel/mixedsim](https://github.com/Isotel/mixedsim)
   - [isotel.eu/mixedsim](https://www.isotel.eu/mixedsim/#)
 - [labsland.com](https://labsland.com)
