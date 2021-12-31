@@ -40,6 +40,12 @@ With regard to distribution, there is work in progress for using `*.core` (YAML)
   <a href="https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board"><img src="https://gitlab.ensta-bretagne.fr/bollenth/ghdl-vpi-virtual-board/-/raw/master/images/screenshot_main_window.png"/></a>
 </p>
 
+- [An Interactive VHDL Testbench Using GHDL, Python, and Cocotb](https://blog.chuckstechtalk.com/software/2021/12/27/interactive-vhdl-testbench.html):
+
+<p align="center">
+  <a href="https://blog.chuckstechtalk.com/software/2021/12/27/interactive-vhdl-testbench.html"><img width=400 src="https://github.com/chuckb/ghdl-interactive-sim/raw/8a466215dd18c6c809dd96f8d03fa53cad8417c2/test/images/screen_shot.png"/></a>
+</p>
+
 - Visualization of hyperspectral/multispectral image processing cores ([VUnit/vunit#568](https://github.com/VUnit/vunit/pull/568)):
 
 <p align="center">
